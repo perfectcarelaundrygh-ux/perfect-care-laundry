@@ -20,6 +20,14 @@ python -m http.server 8000
 
 There are no tests, linters, or CI configured in this repo.
 
+## Deployment
+
+- **Live site:** https://perfectcarelaundrygh-ux.github.io/perfect-care-laundry/
+- **Repo:** https://github.com/perfectcarelaundrygh-ux/perfect-care-laundry
+- **Hosting:** GitHub Pages, deployed from the `master` branch root (Settings → Pages → "Deploy from a branch"). No build step — pushing to `master` is the entire deploy.
+- This is a GitHub Pages **project site**, not a `<username>.github.io` root repo, so it's served under the `/perfect-care-laundry/` subpath rather than at the domain root. All internal links and asset references (`href`/`src`) must stay **relative** (no leading `/`) — they currently are, verified across all 10 pages.
+- `<link rel="canonical">`, `og:url`, `og:image`, `twitter:image`, and the JSON-LD `@id`/`image`/`url` fields on every page point to the live github.io URL above, not the `perfectcarelaundrygh.com` custom domain referenced in business copy — no `CNAME` file exists in the repo, so that custom domain is not actually configured/live. If a custom domain is ever wired up (add `CNAME` + DNS), these URLs need to be swapped back.
+
 ## Architecture
 
 **Pages** (each is a fully self-contained HTML file, no templating/includes):
@@ -66,7 +74,7 @@ Because there is no templating engine, the `<head>` (meta/SEO/Open Graph/structu
 - Phone / WhatsApp: `+233 59 896 3585` (`tel:+233598963585`, `wa.me/233598963585`)
 - Address: "Opposite Emefs Police Station, Mataheko–Afienya" — this is the single canonical form, used consistently in visible page content (top bar, footer, Google Maps link) **and** in the structured-data JSON-LD (`streetAddress: "Opposite Emefs Police Station, Mataheko"`, `addressLocality: "Afienya"`) across all 10 pages.
 - Hours: Mon–Sat, 07:00–19:00 (7:00 AM – 7:00 PM)
-- Structured data: `DryCleaningOrLaundry` JSON-LD block in every page's `<head>`, keyed to `https://www.perfectcarelaundrygh.com/#business`
+- Structured data: `DryCleaningOrLaundry` JSON-LD block in every page's `<head>`, keyed to `https://perfectcarelaundrygh-ux.github.io/perfect-care-laundry/#business` (see Deployment section above for why)
 - These details appear repeatedly across structured data, the top bar, footer, and page content in every HTML file — if the user gives you a real, confirmed change (e.g. new hours), update it **everywhere it appears**, not just one page.
 
 ## Working conventions
