@@ -3250,6 +3250,19 @@ MICRO-INTERACTIONS & HOVER POLISH
     }
 }
 
+@media (max-width:768px){
+
+    /* The desktop entrance animation's final transform (translate(-50%,0))
+       is centered for the absolutely-positioned desktop card. On mobile the
+       card becomes static/full-width (see RESPONSIVE section above), so that
+       leftover -50% X-offset would shift it off-screen to the left. Disabling
+       the animation here lets the mobile transform:none rule apply cleanly. */
+    .hero-card{
+        animation:none;
+    }
+
+}
+
 @media (prefers-reduced-motion: reduce){
 
     .btn-primary::after,
